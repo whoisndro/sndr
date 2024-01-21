@@ -1,4 +1,5 @@
-// models/index.js
+"use strict"
+
 const fs = require("fs")
 const path = require("path")
 const Sequelize = require("sequelize")
@@ -34,14 +35,14 @@ fs.readdirSync(__dirname)
       sequelize,
       Sequelize.DataTypes
     )
-    const modelName = model.name
-
-    db[modelName] = model
-
-    if (db[modelName].associate) {
-      db[modelName].associate(db)
-    }
+    db[model.name] = model
   })
+
+Object.keys(db).forEach((modelName) => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db)
+  }
+})
 
 db.sequelize = sequelize
 db.Sequelize = Sequelize

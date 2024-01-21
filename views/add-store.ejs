@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create New Store</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .desc {
+        margin-bottom: 24px;
+      }
+      .field-form {
+        display: flex;
+        flex-direction: column;
+      }
+      .radio-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+      }
+      .input-field {
+        padding: 4px 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Create New Store</h1>
+      <div class="desc">Please filled the form below to add a new store!</div>
+      <form class="field-form" method="post">
+        <label> What is the name of your store? </label><br />
+        <input class="input-field" type="text" name="name" /><br />
+        <label> What does your store located? </label><br />
+        <input class="input-field" type="text" name="location" /><br />
+        <label> What kind of store do you want? </label><br />
+        <div class="radio-group">
+          <input type="radio" name="category" value="Mart" id="mart" required />
+          <label for="mart">Mart</label><br />
+          <input type="radio" name="category" value="Midi" id="midi" required />
+          <label for="midi">Midi</label><br />
+          <input
+            type="radio"
+            name="category"
+            value="Express"
+            id="express"
+            required
+          />
+          <label for="express">Express</label><br />
+        </div>
+        <br />
+        <button type="submit" class="input-field">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

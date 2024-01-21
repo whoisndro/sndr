@@ -1,26 +1,45 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+// models/stores.js
+"use strict"
+const { Model } = require("sequelize")
+
 module.exports = (sequelize, DataTypes) => {
   class Stores extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
+      Stores.hasMany(models.Employees, { foreignKey: "storeId" })
     }
   }
-  Stores.init({
-    name: DataTypes.STRING,
-    code: DataTypes.STRING,
-    location: DataTypes.STRING,
-    category: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Stores',
-  });
-  return Stores;
-};
+
+  Stores.init(
+    {
+      name: DataTypes.STRING,
+      code: DataTypes.STRING,
+      location: DataTypes.STRING,
+      category: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: "Stores",
+    }
+  )
+
+  Stores.beforeCreate(async (store, options) => {
+    const categoryCodeMap = {
+      Mart: "001",
+      Midi: "002",
+      Express: "003",
+    }
+
+    const categoryCode = categoryCodeMap[store.category]
+
+    if (!categoryCode) {
+      throw new Error("Invalid category")
+    }
+
+    const currentTime = new Date().getTime()
+    const generatedCode = `${categoryCode}-${currentTime}`
+
+    store.code = generatedCode
+  })
+
+  return Stores
+}

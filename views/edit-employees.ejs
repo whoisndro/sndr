@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create New Store</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .desc {
+        margin-bottom: 24px;
+      }
+      .field-form {
+        display: flex;
+        flex-direction: column;
+      }
+      .radio-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+      }
+      .input-field {
+        padding: 4px 8px;
+      }
+      .navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 0px 8px;
+      }
+      .item {
+        padding-right: 12px;
+        border-right: 1px solid #000000;
+        cursor: pointer;
+        text-decoration: none;
+        color: #000000;
+      }
+      .item:hover {
+        color: #007bff;
+      }
+      .item:last-child {
+        border-right: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="navbar">
+        <% menus.map((el) => { %>
+        <a href="/stores/add" class="item"><%= el.option %> </a>
+        <% }) %>
+      </div>
+      <h1>Add Employee</h1>
+      <h2>Store Name: <%= data.name %></h2>
+      <div class="desc">Please filled the form below to add employees!</div>
+      <form class="field-form" method="post">
+        <label> First Name </label><br />
+        <input class="input-field" type="text" name="firstName" /><br />
+        <label> Last Name </label><br />
+        <input class="input-field" type="text" name="lastName" /><br />
+        <label> Date of Birth </label><br />
+        <input class="input-field" type="date" name="dateOfBirth" /><br />
+        <label> Education </label><br />
+        <select name="education" id="education">
+          <option value="SMA">SMA</option>
+          <option value="S1">S1</option>
+          <option value="S2">S2</option>
+          <option value="S3">S3</option></select
+        ><br />
+        <label> Position </label><br />
+        <div class="radio-group">
+          <input
+            type="radio"
+            name="position"
+            value="Staff"
+            id="staff"
+            required
+          />
+          <label for="staff">Staff</label><br />
+          <input
+            type="radio"
+            name="position"
+            value="Supervisor"
+            id="supervisor"
+            required
+          />
+          <label for="supervisor">Supervisor</label><br />
+          <input
+            type="radio"
+            name="position"
+            value="Manager"
+            id="manager"
+            required
+          />
+          <label for="manager">Manager</label><br />
+          <input type="radio" name="position" value="CEO" id="ceo" required />
+          <label for="ceo">CEO</label><br />
+        </div>
+        <br />
+        <label> Salary </label><br />
+        <input class="input-field" type="number" name="salary" /><br />
+        <button type="submit" class="input-field">Add Employee</button>
+      </form>
+    </div>
+  </body>
+</html>

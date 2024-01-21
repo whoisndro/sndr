@@ -1,4 +1,14 @@
 const express = require("express")
-const EmployeeRoute = express.Router()
+const router = express.Router()
+const EmployeesController = require("../controllers/Employees")
 
-module.exports = EmployeeRoute
+router.get(
+  "/:storeId/employees/:employeeId/edit",
+  EmployeesController.getEmployeeById
+)
+router.post(
+  "/:storeId/employees/:employeeId/edit",
+  EmployeesController.updateEmployee
+)
+
+module.exports = router
