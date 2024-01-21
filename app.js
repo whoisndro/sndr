@@ -1,17 +1,17 @@
 // Happy coding guys
 
-const express = require("express");
-const app = express();
-const port = 3000;
-const Routes = require("./route/index");
+const express = require("express")
+const app = express()
+const port = 5050
+const Routes = require("./route/index")
+require("./models")
 
-app.set("view engine", "ejs");
+app.set("view engine", "ejs")
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static("public"));
-app.use("/", Routes);
+app.use(express.urlencoded({ extended: false }))
+app.use(express.static("public"))
+app.use("/", Routes)
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
-
+  console.log(`App listening on port ${port}`)
+})

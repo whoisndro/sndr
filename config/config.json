@@ -1,9 +1,10 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "betamidi_db.",
-    "host": "localhost",
-    "dialect": "postgres"
+    "username": "root",
+    "password": "",
+    "database": "betamidi_db",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "dialect": "mysql"
   }
 }

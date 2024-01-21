@@ -1,8 +1,8 @@
-const express = require("express");
-const { Store } = require("../models/stores");
-const Controller = require("../controllers/Controller");
-const StoreRoute = express.Router();
+// route/storerouter.js
+const express = require("express")
+const router = express.Router()
+const StoresController = require("../controllers/Stores")
 
+router.get("/", StoresController.getAllStores)
 
-module.exports = StoreRoute;
-
+module.exports = router
